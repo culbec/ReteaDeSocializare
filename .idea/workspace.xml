@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7fd86d2b-315d-48e5-be39-4d15dfdcdb96" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/Main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/ReteaDeSocializare.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/RunTests.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/TestCommunities.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/TestEntity.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/TestRepository.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/TestService.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/TestValidator.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/allclasses-index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/allpackages-index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/copy.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/element-list" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/entity/Community.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/entity/Entity.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/entity/Friendship.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/entity/Tuple.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/entity/User.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/entity/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/entity/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/exception/RepositoryException.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/exception/ServiceException.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/exception/ValidatorException.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/exception/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/exception/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/help-doc.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-10.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-11.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-12.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-13.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-14.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-15.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-16.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-17.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index-files/index-9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/legal/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/legal/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/legal/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/legal/jquery.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/legal/jqueryUI.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/link.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/member-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/module-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/overview-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/overview-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/package-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/repository/AbstractRepository.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/repository/InMemoryRepository.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/repository/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/repository/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/resources/glass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/resources/x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/script-dir/jquery-3.6.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/script-dir/jquery-ui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/script-dir/jquery-ui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/search-page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/search.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/search.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/serialized-form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/service/AbstractService.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/service/Service.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/service/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/service/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/stylesheet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/tag-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/type-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/ui/AbstractUI.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/ui/Action.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/ui/ConsoleUI.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/ui/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/ui/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/utility/Graph.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/utility/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/utility/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/validator/AbstractValidator.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/validator/UserValidator.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/validator/ValidateStrategy.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/validator/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/javadoc/validator/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Tuple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestRepository.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2XCyKfhBiC7H28PRUjxZzhZTs4l" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/culbec/facultate/MAP/ReteaDeSocializare",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.RunTests">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="ReteaDeSocializare" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="RunTests" />
+      <module name="ReteaDeSocializare" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.RunTests" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7fd86d2b-315d-48e5-be39-4d15dfdcdb96" name="Changes" comment="" />
+      <created>1698147293511</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698147293511</updated>
+      <workItem from="1698147294634" duration="837000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
