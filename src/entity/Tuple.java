@@ -2,6 +2,11 @@ package entity;
 
 import java.util.Objects;
 
+/**
+ * Pair of elements.
+ * @param <E1> First entity of the pair.
+ * @param <E2> Second entity of the pair.
+ */
 public class Tuple<E1, E2> {
     private final E1 left;
     private final E2 right;

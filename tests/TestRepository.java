@@ -65,7 +65,8 @@ public class TestRepository {
             assert true;
         }
 
-        assert (userRepository.delete(user1.getId()).equals(user1));
+        User deleted = userRepository.delete(user1.getId());
+        assert (deleted.equals(user1));
         userRepository.save(user1);
 
         try {
