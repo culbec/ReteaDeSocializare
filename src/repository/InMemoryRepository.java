@@ -5,6 +5,7 @@ import exception.RepositoryException;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class InMemoryRepository<ID, E extends Entity<ID>> implements AbstractRepository<ID, E> {
     private final Map<ID, E> entities;
@@ -48,44 +49,39 @@ public class InMemoryRepository<ID, E extends Entity<ID>> implements AbstractRep
      * Searches for one entity in the repository.
      *
      * @param id ID of the Entity to search
-     * @return Entity with its ID equal to id
-     * @throws RepositoryException      If the entity with the specified ID doesn't exist
+     * @return {@code Optional}
+     * - null if the entity with the specified ID does not exist
+     * - otherwise returns the entity
      * @throws IllegalArgumentException If the id is null
      */
 
     @Override
-    public E getOne(ID id) throws RepositoryException, IllegalArgumentException {
+    public Optional<E> getOne(ID id) throws IllegalArgumentException {
         if (id == null) {
             throw new IllegalArgumentException("The id cannot be null!");
         }
-        if (this.entities.get(id) == null) {
-            throw new RepositoryException("Entity with the specified id doesn't exist!");
-        }
-        return this.entities.get(id);
+        return Optional.ofNullable(this.entities.get(id)); // is null if the entity doesn't exist
     }
 
     /**
      * Adds an entity to the repository.
      *
      * @param e Entity that should be added
+     * @return an {@code Optional}
+     * - null if the entity was saved
+     * - the entity if it was already saved
      * @throws RepositoryException      If the entity that should be added already exists.
      * @throws IllegalArgumentException If the entity is null.
      */
     @Override
-    public void save(E e) throws RepositoryException, IllegalArgumentException {
+    public Optional<E> save(E e) throws RepositoryException, IllegalArgumentException {
         if (e == null) {
             throw new IllegalArgumentException("Entity cannot be null!");
         }
-        if (this.entities.get(e.getId()) != null) {
-            throw new RepositoryException("An entity with the same id is already stored!");
-        } else {
-            for (Entity<ID> entity : this.entities.values()) {
-                if (entity.equals(e)) {
-                    throw new RepositoryException("The same entity is already stored!");
-                }
-            }
+        if (this.entities.containsValue(e)) {
+            throw new RepositoryException("The same entity is already stored!");
         }
-        this.entities.put(e.getId(), e);
+        return Optional.ofNullable(this.entities.putIfAbsent(e.getId(), e));
     }
 
 
@@ -93,38 +89,36 @@ public class InMemoryRepository<ID, E extends Entity<ID>> implements AbstractRep
      * Removes an entity from the repository
      *
      * @param id ID of the entity to remove.
-     * @return Removed entity.
-     * @throws RepositoryException      If the entity with the specified ID doesn't exist.
+     * @return an {@code Optional}
+     * - null if there is no entity with the given id
+     * - otherwise returns the entity
      * @throws IllegalArgumentException If the id is null.
      */
     @Override
-    public E delete(ID id) throws RepositoryException, IllegalArgumentException {
+    public Optional<E> delete(ID id) throws IllegalArgumentException {
         if (id == null) {
             throw new IllegalArgumentException("Id cannot be null!");
         }
-        if (this.entities.get(id) == null) {
-            throw new RepositoryException("Entity with the specified id doesn't exist!");
-        }
 
-        return this.entities.remove(id);
+        return Optional.ofNullable(this.entities.remove(id));
     }
 
     /**
      * Updates and entity.
      *
      * @param e New entity.
-     * @return The entity before update.
+     * @return an {@code Optional} encapsulating the old entity
      * @throws RepositoryException      If the entity with the specified ID doesn't exist.
      * @throws IllegalArgumentException If the e is null.
      */
     @Override
-    public E update(E e) throws RepositoryException, IllegalArgumentException {
+    public Optional<E> update(E e) throws RepositoryException, IllegalArgumentException {
         if (e == null) {
             throw new IllegalArgumentException("Id cannot be null!");
         }
         if (this.entities.get(e.getId()) == null) {
             throw new RepositoryException("Entity with the specified id doesn't exist!");
         }
-        return this.entities.put(e.getId(), e);
+        return Optional.ofNullable(this.entities.put(e.getId(), e));
     }
 }

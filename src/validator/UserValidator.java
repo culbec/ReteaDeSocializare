@@ -17,7 +17,7 @@ public class UserValidator extends AbstractValidator<UUID, User> {
      * @param firstName The first name.
      * @return String of errors.
      */
-    private String validateFirstNameSlow(String firstName) {
+    private String validateFirstName(String firstName) {
         ArrayList<String> errors = new ArrayList<>();
         // checking if the first name contains only letters and the first letter is uppercase.
         if (firstName == null) {
@@ -43,21 +43,6 @@ public class UserValidator extends AbstractValidator<UUID, User> {
     }
 
     /**
-     * Validates the first name quick.
-     *
-     * @param firstName The first name.
-     * @return String of errors.
-     */
-    private String validateFirstNameQuick(String firstName) {
-        if (firstName == null) {
-            return "First name cannot be null.";
-        } else if (firstName.isEmpty()) {
-            return "First name cannot be empty.";
-        }
-        return "";
-    }
-
-    /**
      * Validates the last name of a user.
      * The last name should start with a capital letter, have at least to letters, and contain only lower case letters
      * for all the letters except the first.
@@ -65,7 +50,7 @@ public class UserValidator extends AbstractValidator<UUID, User> {
      * @param lastName The last name.
      * @return String of errors.
      */
-    private String validateLastNameSlow(String lastName) {
+    private String validateLastName(String lastName) {
         ArrayList<String> errors = new ArrayList<>();
 
         // checking if the last name starts with an uppercase letter and it contains only letters
@@ -93,27 +78,12 @@ public class UserValidator extends AbstractValidator<UUID, User> {
     }
 
     /**
-     * Validates the last name quick.
-     *
-     * @param lastName The last name.
-     * @return String of errors.
-     */
-    private String validateLastNameQuick(String lastName) {
-        if (lastName == null) {
-            return "Last name cannot be null.";
-        } else if (lastName.isEmpty()) {
-            return "Last name cannot be empty.";
-        }
-        return "";
-    }
-
-    /**
      * Validates the email of a user.
      *
      * @param email The email.
      * @return String of errors.
      */
-    private String validateEmailSlow(String email) {
+    private String validateEmail(String email) {
         ArrayList<String> errors = new ArrayList<>();
 
         // checking if the email is valid
@@ -138,40 +108,18 @@ public class UserValidator extends AbstractValidator<UUID, User> {
                 .reduce("", (str1, str2) -> str1.concat(" ").concat(str2));
     }
 
-    private String validateEmailQuick(String email) {
-        if (email == null) {
-            return "Email cannot be null.";
-        } else if (email.isEmpty()) {
-            return "Email cannot be empty.";
-        }
-        return "";
-    }
-
     /**
      * Validates an entity of type User.
      */
     @Override
-    public void validateSlow(User user) throws ValidatorException {
-        ArrayList<String> errors = new ArrayList<>();
-        errors.add(this.validateFirstNameSlow(user.getFirstName()));
-        errors.add(this.validateLastNameSlow(user.getLastName()));
-        errors.add(this.validateEmailSlow(user.getEmail()));
-
-        String result = errors
-                .stream()
-                .reduce("", (str1, str2) -> str1.concat("").concat(str2));
-
-        if (!result.isEmpty()) {
-            throw new ValidatorException(result);
+    public void validate(User user) throws ValidatorException {
+        if(user == null) {
+            throw new ValidatorException("User cannot be null!");
         }
-    }
-
-    @Override
-    public void validateQuick(User user) throws ValidatorException {
         ArrayList<String> errors = new ArrayList<>();
-        errors.add(this.validateFirstNameQuick(user.getFirstName()));
-        errors.add(this.validateLastNameQuick(user.getLastName()));
-        errors.add(this.validateEmailQuick(user.getEmail()));
+        errors.add(this.validateFirstName(user.getFirstName()));
+        errors.add(this.validateLastName(user.getLastName()));
+        errors.add(this.validateEmail(user.getEmail()));
 
         String result = errors
                 .stream()

@@ -6,7 +6,6 @@ import entity.Tuple;
 import entity.User;
 import exception.RepositoryException;
 import exception.ServiceException;
-import validator.ValidateStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,26 +17,25 @@ public interface AbstractService<ID> {
      * @param firstName The First name of the user to be added.
      * @param lastName  The Last name of the user to be added.
      * @param email     Email of the user to be added.
-     * @param strategy  Validator strategy.
      * @throws ServiceException If the user couldn't be added.
      */
 
-    void addUser(String firstName, String lastName, String email, ValidateStrategy strategy) throws ServiceException;
+    void addUser(String firstName, String lastName, String email) throws ServiceException;
 
     /**
      * Removes a user from the list of users.
      *
      * @param id ID of the user to be removed
-     * @return The removed user.
+     * @return an {@code Optional} encapsulating the removed user.
      * @throws ServiceException If the user can't be removed.
      */
-    Entity<ID> removeUser(ID id) throws ServiceException;
+    User removeUser(ID id) throws ServiceException;
 
     /**
      * Gets a user based on its email.
      *
      * @param id ID of the user to get.
-     * @return User based on its ID.
+     * @return an {@code Optional} encapsulating the user.
      * @throws ServiceException If the user couldn't be found.
      */
     User getUser(ID id) throws ServiceException;
@@ -82,17 +80,10 @@ public interface AbstractService<ID> {
      * @param id1 ID of the first user.
      * @param id2 ID of the second user.
      * @return Friendship that was removed.
+     * @throws ServiceException If the friendship couldn't be found.
      */
     Entity<Tuple<ID, ID>> removeFriendship(ID id1, ID id2) throws ServiceException;
 
-    /**
-     * Returns the friendship between two users.
-     *
-     * @param id1 ID of the first user.
-     * @param id2 ID of the second user.
-     * @return The friendship between the two users.
-     */
-    Friendship getFriendship(ID id1, ID id2) throws ServiceException;
 
     /**
      * Returns the list of friendships.
@@ -101,13 +92,9 @@ public interface AbstractService<ID> {
      */
     ArrayList<Friendship> getFriendships();
 
-    /**
-     * @return Number of communities between users.
-     */
-    int getNumberOfCommunities();
 
     /**
-     * @return Most active community in the network.
+     * Returns the number of communities and a list of the most active communities.
      */
-    List<List<ID>> mostActiveCommunity();
+    Tuple<Integer, List<List<ID>>> communities();
 }

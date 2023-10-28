@@ -1,5 +1,7 @@
+import entity.Friendship;
 import entity.User;
 import exception.ValidatorException;
+import validator.FriendshipValidator;
 import validator.UserValidator;
 
 import java.time.LocalDateTime;
@@ -8,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 public class TestValidator {
     public static void run() {
         UserValidator userValidator = new UserValidator();
+        FriendshipValidator friendshipValidator = new FriendshipValidator();
 
         User allNullUser = new User(null, null, null);
         User firstNameNullUser = new User(null, "notnull", "notnull");
@@ -22,100 +25,91 @@ public class TestValidator {
 
         // Quick validators
         try {
-            userValidator.validateQuick(allNullUser);
+            userValidator.validate(allNullUser);
             assert (false);
         } catch (ValidatorException vE) {
             assert true;
         }
         try {
-            userValidator.validateQuick(firstNameNullUser);
+            userValidator.validate(firstNameNullUser);
             assert (false);
         } catch (ValidatorException vE) {
             assert true;
         }
         try {
-            userValidator.validateQuick(lastNameNullUser);
+            userValidator.validate(lastNameNullUser);
             assert (false);
         } catch (ValidatorException vE) {
             assert true;
         }
         try {
-            userValidator.validateQuick(emailNullUser);
+            userValidator.validate(emailNullUser);
             assert (false);
         } catch (ValidatorException vE) {
             assert true;
         }
         try {
-            userValidator.validateQuick(allEmptyUser);
+            userValidator.validate(allEmptyUser);
             assert (false);
         } catch (ValidatorException vE) {
             assert true;
         }
         try {
-            userValidator.validateQuick(firstNameEmptyUser);
+            userValidator.validate(firstNameEmptyUser);
             assert (false);
         } catch (ValidatorException vE) {
             assert true;
         }
         try {
-            userValidator.validateQuick(lastNameEmptyUser);
+            userValidator.validate(lastNameEmptyUser);
             assert (false);
         } catch (ValidatorException vE) {
             assert true;
         }
         try {
-            userValidator.validateQuick(emailEmptyUser);
+            userValidator.validate(emailEmptyUser);
             assert (false);
         } catch (ValidatorException vE) {
             assert true;
         }
 
-        // Slow validators
+        User validUser = new User("Marian", "Vasile", "mv@mail.com");
         try {
-            userValidator.validateSlow(allNullUser);
-            assert (false);
+            userValidator.validate(validUser);
+            assert true;
+        } catch (ValidatorException vE) {
+            assert false;
+        }
+
+        Friendship nullFriendship = new Friendship(null, null);
+        Friendship nullLeftFriendship = new Friendship(null, validUser.getId());
+        Friendship nullRightFriendship = new Friendship(validUser.getId(), null);
+        Friendship sameFriendship = new Friendship(validUser.getId(), validUser.getId());
+
+        try {
+            friendshipValidator.validate(nullFriendship);
+            assert false;
         } catch (ValidatorException vE) {
             assert true;
         }
+
         try {
-            userValidator.validateSlow(firstNameNullUser);
-            assert (false);
+            friendshipValidator.validate(nullLeftFriendship);
+            assert false;
         } catch (ValidatorException vE) {
             assert true;
         }
+
         try {
-            userValidator.validateSlow(lastNameNullUser);
-            assert (false);
+            friendshipValidator.validate(nullRightFriendship);
+            assert false;
         } catch (ValidatorException vE) {
             assert true;
         }
+
         try {
-            userValidator.validateSlow(emailNullUser);
-            assert (false);
-        } catch (ValidatorException vE) {
-            assert true;
-        }
-        try {
-            userValidator.validateSlow(allEmptyUser);
-            assert (false);
-        } catch (ValidatorException vE) {
-            assert true;
-        }
-        try {
-            userValidator.validateSlow(firstNameEmptyUser);
-            assert (false);
-        } catch (ValidatorException vE) {
-            assert true;
-        }
-        try {
-            userValidator.validateSlow(lastNameEmptyUser);
-            assert (false);
-        } catch (ValidatorException vE) {
-            assert true;
-        }
-        try {
-            userValidator.validateSlow(emailEmptyUser);
-            assert (false);
+            friendshipValidator.validate(sameFriendship);
+            assert false;
         } catch (ValidatorException vE) {
             assert true;
         }

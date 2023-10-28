@@ -3,6 +3,8 @@ package repository;
 import entity.Entity;
 import exception.RepositoryException;
 
+import java.util.Optional;
+
 /**
  * CRUD Operations for the repository interface.
  *
@@ -35,38 +37,44 @@ public interface AbstractRepository<ID, E extends Entity<ID>> {
      * Searches for one entity in the repository.
      *
      * @param id ID of the Entity to search
-     * @return Entity with its ID equal to id
-     * @throws RepositoryException      If the entity with the specified ID doesn't exist
+     * @return {@code Optional}
+     * - null if the entity with the specified ID does not exist
+     * - otherwise returns the entity
      * @throws IllegalArgumentException If the id is null.
      */
-    E getOne(ID id) throws RepositoryException, IllegalArgumentException;
+    Optional<E> getOne(ID id) throws IllegalArgumentException;
 
     /**
      * Adds an entity to the repository.
      *
      * @param e Entity that should be added
-     * @throws RepositoryException      If the entity that should be added already exists.
+     * @return an {@code Optional}
+     * - null if the entity was saved
+     * - the entity if it was already saved
      * @throws IllegalArgumentException If the entity is null.
      */
-    void save(E e) throws RepositoryException, IllegalArgumentException;
+    Optional<E> save(E e) throws RepositoryException, IllegalArgumentException;
 
     /**
      * Removes an entity from the repository
      *
      * @param id ID of the entity to remove.
-     * @return Removed entity.
-     * @throws RepositoryException      If the entity with the specified ID doesn't exist.
+     * @return an {@code Optional}
+     * - null if there is no entity with the given id
+     * - otherwise returns the entity
      * @throws IllegalArgumentException If the id is null.
      */
-    E delete(ID id) throws RepositoryException, IllegalArgumentException;
+    Optional<E> delete(ID id) throws IllegalArgumentException;
 
     /**
-     * Updates and entity.
+     * Updates an entity.
      *
      * @param e New entity.
-     * @return The entity before updates.
+     * @return an {@code Optional}
+     * - null if the entity was updated
+     * - otherwise (e.g. id does not exist) returns the entity
      * @throws RepositoryException      If the entity with the specified ID doesn't exist.
      * @throws IllegalArgumentException If the id is null.
      */
-    E update(E e) throws RepositoryException, IllegalArgumentException;
+    Optional<E> update(E e) throws RepositoryException, IllegalArgumentException;
 }

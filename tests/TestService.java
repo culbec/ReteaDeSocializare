@@ -4,7 +4,6 @@ import entity.User;
 import exception.ServiceException;
 import repository.InMemoryRepository;
 import service.Service;
-import validator.ValidateStrategy;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -23,7 +22,7 @@ public class TestService {
 
         // adding an user
         try {
-            service.addUser("", "", "", ValidateStrategy.QUICK);
+            service.addUser("", "", "");
             assert false;
         } catch (ServiceException sE) {
             assert true;
@@ -31,23 +30,23 @@ public class TestService {
 
 
         // testing add
-        service.addUser("Marius", "Chiriac", "marius.chiriac@mail.com", ValidateStrategy.SLOW);
+        service.addUser("Marius", "Chiriac", "marius.chiriac@mail.com");
         assert (!service.getUsers().isEmpty());
 
         // testing remove
         service.removeUser(service.getUsers().getFirst().getId());
         assert (service.getUsers().isEmpty());
 
-        service.addUser("Ion", "Remus", "ion.remus@mail.com", ValidateStrategy.QUICK);
+        service.addUser("Ion", "Remus", "ion.remus@mail.com");
 
         try {
-            service.addUser("Ion", "Remus", "ion.remus@mail.com", ValidateStrategy.QUICK);
+            service.addUser("Ion", "Remus", "ion.remus@mail.com");
             assert false;
         } catch (ServiceException sE) {
             assert true;
         }
 
-        service.addUser("Mariana", "Chiriac", "mariana.chiriac@mail.com", ValidateStrategy.SLOW);
+        service.addUser("Mariana", "Chiriac", "mariana.chiriac@mail.com");
 
         // adding a friendship
         User user1 = service.getUsers().getFirst();
@@ -55,7 +54,6 @@ public class TestService {
         service.addFriendship(user1.getId(), user2.getId());
         assert (!service.getFriendsOf(user1.getId()).isEmpty());
         assert (!service.getFriendships().isEmpty());
-        assert (service.getFriendship(user1.getId(), user2.getId()) != null);
 
         // trying to add the same friendship
         try {
@@ -97,18 +95,12 @@ public class TestService {
         assert (service.getUser(user2.getId()).equals(user2));
 
         // adding back the user to test removal of friendship
-        service.addUser("Marius", "Chiriac", "marius.chiriac@mail.com", ValidateStrategy.QUICK);
+        service.addUser("Marius", "Chiriac", "marius.chiriac@mail.com");
         User friend1 = service.getUsers().getFirst();
         User friend2 = service.getUsers().getLast();
         service.addFriendship(friend1.getId(), friend2.getId());
         assert (service.removeFriendship(friend1.getId(), friend2.getId()).getId().getLeft().equals(friend1.getId()));
         assert (service.getFriendships().isEmpty());
-        try {
-            service.getFriendship(friend1.getId(), friend2.getId());
-            assert false;
-        } catch (ServiceException sE) {
-            assert true;
-        }
 
         System.out.println("Service tests passed at: " + DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss").format(LocalDateTime.now()));
     }
