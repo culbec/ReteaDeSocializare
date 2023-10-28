@@ -13,18 +13,31 @@ public class Graph {
      * @return Longest path from source to all other members in the network.
      */
     private int lee(UUID source, Set<UUID> users, HashMap<UUID, List<UUID>> friends) {
-        int max = -1;
+        final int[] max = {-1};
+
         for (UUID uuid : friends.get(source)) {
             if (!users.contains(uuid)) {
                 users.add(uuid);
                 int tempPath = lee(uuid, users, friends);
-                if (tempPath > max) {
-                    max = tempPath;
+                if (tempPath > max[0]) {
+                    max[0] = tempPath;
                 }
                 users.remove(uuid);
             }
         }
-        return max + 1;
+
+        /*friends.get(source).forEach(userId -> {
+            if (!users.contains(userId)) {
+                users.add(userId);
+                int tempPath = lee(userId, users, friends);
+                if (tempPath > max[0]) {
+                    max[0] = tempPath;
+                }
+                users.remove(userId);
+            }
+        });*/
+
+        return max[0] + 1;
     }
 
     /**
@@ -47,14 +60,16 @@ public class Graph {
      * @return Longest path in the graph.
      */
     public int longestPath(Iterable<UUID> users, HashMap<UUID, List<UUID>> friends) {
-        int max = 0;
+        final int[] max = {0};
+
         for (UUID uuid : users) {
             int path = this.longestPathFromSource(uuid, friends);
-            if (max < path) {
-                max = path;
+            if (max[0] < path) {
+                max[0] = path;
             }
         }
-        return max;
+
+        return max[0];
     }
 
     /**
@@ -70,12 +85,12 @@ public class Graph {
         list.add(userId);
         users.add(userId);
 
-        for (UUID uuid : friends.get(userId)) {
-            if (!users.contains(uuid)) {
-                List<UUID> uuidFriends = runDFS(uuid, users, friends);
+        friends.get(userId).forEach(_userId -> {
+            if (!users.contains(_userId)) {
+                List<UUID> uuidFriends = runDFS(_userId, users, friends);
                 list.addAll(uuidFriends);
             }
-        }
+        });
 
         return list;
     }
@@ -89,11 +104,12 @@ public class Graph {
         Set<UUID> set = new HashSet<>();
         List<List<UUID>> list = new ArrayList<>();
 
-        for (UUID userId : users) {
+        users.forEach(userId -> {
             if (!set.contains(userId)) {
                 list.add(runDFS(userId, set, friends));
             }
-        }
+        });
+
         return list;
     }
 }

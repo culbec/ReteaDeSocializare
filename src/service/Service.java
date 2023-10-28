@@ -64,10 +64,13 @@ public class Service implements AbstractService<UUID> {
         }
 
         Iterable<User> friendsOf = this.getFriendsOf(userId);
-        for (User user : friendsOf) {
-            this.friendships.delete(new Tuple<>(user.getId(), userId));
-            this.friendships.delete(new Tuple<>(userId, user.getId()));
-        }
+        friendsOf.forEach(user -> {
+            if (this.friendships.getOne(new Tuple<>(userId, user.getId())).isEmpty()) {
+                this.friendships.delete(new Tuple<>(user.getId(), userId));
+            } else {
+                this.friendships.delete(new Tuple<>(userId, user.getId()));
+            }
+        });
 
         return deleted.get();
     }
@@ -113,7 +116,8 @@ public class Service implements AbstractService<UUID> {
     @Override
     public ArrayList<User> getFriendsOf(UUID uuid) throws RepositoryException {
         ArrayList<User> friends = new ArrayList<>();
-        for (Friendship friendship : this.friendships.getAll()) {
+
+        this.friendships.getAll().forEach(friendship -> {
             if (friendship.getId().getLeft().equals(uuid)) {
                 Optional<User> friend = this.users.getOne(friendship.getId().getRight());
                 friend.ifPresent(friends::add);
@@ -121,7 +125,8 @@ public class Service implements AbstractService<UUID> {
                 Optional<User> friend = this.users.getOne(friendship.getId().getLeft());
                 friend.ifPresent(friends::add);
             }
-        }
+        });
+
         return friends;
     }
 
@@ -158,7 +163,7 @@ public class Service implements AbstractService<UUID> {
 
         if (friendship.isEmpty()) {
             friendship = this.friendships.getOne(new Tuple<>(id2, id1));
-            if(friendship.isEmpty()) {
+            if (friendship.isEmpty()) {
                 throw new ServiceException("No friendship found.");
             } else {
                 this.friendships.delete(friendship.get().getId());
@@ -191,41 +196,36 @@ public class Service implements AbstractService<UUID> {
         List<List<UUID>> communityMembers = new ArrayList<>();
 
         Set<UUID> userSet = new HashSet<>();
-        //noinspection DuplicatedCode
         ArrayList<UUID> userIds = new ArrayList<>();
         HashMap<UUID, List<UUID>> friends = new HashMap<>();
 
         this.users.getAll().forEach(user -> userIds.add(user.getId()));
 
-        for (UUID id : userIds) {
-            friends.put(id, new ArrayList<>());
-        }
-
-        for (UUID id : userIds) {
-            Iterable<User> friendsOf = this.getFriendsOf(id);
-            for (User user : friendsOf) {
-                friends.get(id).add(user.getId());
-            }
-        }
+        userIds.forEach(userId -> friends.put(userId, new ArrayList<>()));
+        userIds.forEach(userId -> {
+            Iterable<User> friendsOf = this.getFriendsOf(userId);
+            friendsOf.forEach(user -> friends.get(userId).add(user.getId()));
+        });
 
         Graph graph = new Graph();
 
-        int max = -1;
-        for (UUID id : userIds) {
-            if (!userSet.contains(id)) {
-                List<UUID> component = graph.runDFS(id, userSet, friends);
+        final int[] max = {-1};
+        userIds.forEach(userId -> {
+            if (!userSet.contains(userId)) {
+                List<UUID> component = graph.runDFS(userId, userSet, friends);
                 int path = graph.longestPath(component, friends);
 
-                if (path > max) {
+                if (path > max[0]) {
                     communityMembers.clear();
                     communityMembers.add(component);
-                    max = path;
-                } else if (path == max) {
+                    max[0] = path;
+                } else if (path == max[0]) {
                     communityMembers.add(component);
                 }
             }
-        }
+        });
 
-        return new Tuple<>(graph.communities(userIds, friends).size(), communityMembers);
+        Integer noCommunities = graph.communities(userIds, friends).size();
+        return new Tuple<>(noCommunities, communityMembers);
     }
 }

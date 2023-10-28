@@ -258,9 +258,7 @@ public class ConsoleUI extends AbstractUI {
         } else {
             for (List<UUID> community : this.uiCommunities.getRight()) {
                 System.out.println("\nTHE MOST ACTIVE COMMUNITY' MEMBERS\n");
-                for (UUID userId : community) {
-                    System.out.println(this.service.getUser(userId));
-                }
+                community.forEach(userId -> System.out.println(this.service.getUser(userId)));
             }
         }
     }

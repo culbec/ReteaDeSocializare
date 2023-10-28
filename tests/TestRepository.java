@@ -16,6 +16,7 @@ public class TestRepository {
         User user2 = new User("Marian", "Chiriac", "marian.chiriac@mail.com");
 
         assert (userRepository.isEmpty());
+        assert (userRepository.size() == 0);
 
         try {
             userRepository.getOne(null);
@@ -33,8 +34,15 @@ public class TestRepository {
             assert true;
         }
         assert(userRepository.save(user1).isEmpty());
+        try {
+            userRepository.save(user1);
+            assert false;
+        } catch (RepositoryException rE) {
+            assert true;
+        }
+
+        assert(!userRepository.isEmpty());
         assert (userRepository.size() == 1);
-        assert(userRepository.save(user1).isPresent());
 
         assert (userRepository.getOne(user1.getId()).get().equals(user1));
 

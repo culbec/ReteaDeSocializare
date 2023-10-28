@@ -4,35 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fd86d2b-315d-48e5-be39-4d15dfdcdb96" name="Changes" comment="Moved JavaDoc + specified the Tuple class.">
-      <change afterPath="$PROJECT_DIR$/src/validator/FriendshipValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="7fd86d2b-315d-48e5-be39-4d15dfdcdb96" name="Changes" comment="Java 8 Features + Optional on Repository methods + refactored the community feature.">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReteaDeSocializare/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/entity/Tuple.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReteaDeSocializare/entity/Tuple.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/service/AbstractService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReteaDeSocializare/service/AbstractService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/service/Service$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/service/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReteaDeSocializare/service/Service.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/ui/ConsoleUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReteaDeSocializare/ui/ConsoleUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/validator/AbstractValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReteaDeSocializare/validator/AbstractValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/validator/UserValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReteaDeSocializare/validator/UserValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/validator/ValidateStrategy.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/ReteaDeSocializare/TestCommunities.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/ReteaDeSocializare/TestCommunities.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/ReteaDeSocializare/TestService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/ReteaDeSocializare/TestService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/ReteaDeSocializare/TestRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/ReteaDeSocializare/TestRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/ReteaDeSocializare/TestValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/ReteaDeSocializare/TestValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/AbstractRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/AbstractRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/InMemoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/InMemoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/AbstractService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/AbstractService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/Service.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ConsoleUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/AbstractValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/AbstractValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/UserValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/ValidateStrategy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCommunities.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCommunities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/Graph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/TestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +30,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
@@ -57,26 +45,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/culbec/facultate/MAP/ReteaDeSocializare&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Version-0.1",
+    "last_opened_file_path": "/home/culbec/facultate/MAP/ReteaDeSocializare",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "http.proxy",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Application.Main">
+}]]></component>
+  <component name="RunManager" selected="Application.RunTests">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ReteaDeSocializare" />
@@ -87,14 +75,19 @@
     <configuration name="RunTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="RunTests" />
       <module name="ReteaDeSocializare" />
+      <option name="VM_PARAMETERS" value="-ea" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.RunTests" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.RunTests" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -113,7 +106,7 @@
       <workItem from="1698169895691" duration="148000" />
       <workItem from="1698331653786" duration="1040000" />
       <workItem from="1698434306112" duration="136000" />
-      <workItem from="1698486429081" duration="8056000" />
+      <workItem from="1698486429081" duration="9651000" />
     </task>
     <task id="LOCAL-00001" summary="Moved JavaDoc + specified the Tuple class.">
       <option name="closed" value="true" />
@@ -131,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698148322321</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Java 8 Features + Optional on Repository methods + refactored the community feature.">
+      <option name="closed" value="true" />
+      <created>1698494859442</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698494859442</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +140,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Moved JavaDoc + specified the Tuple class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved JavaDoc + specified the Tuple class." />
+    <MESSAGE value="Java 8 Features + Optional on Repository methods + refactored the communities feature." />
+    <MESSAGE value="Java 8 Features + Optional on Repository methods + refactored the community feature." />
+    <option name="LAST_COMMIT_MESSAGE" value="Java 8 Features + Optional on Repository methods + refactored the community feature." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/service/Service.java</url>
+          <line>227</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ReteaDeSocializare$RunTests.ic" NAME="RunTests Coverage Results" MODIFIED="1698495867736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

@@ -6,5 +6,12 @@
         <language minSize="59" name="Java" />
       </Languages>
     </inspection_tool>
+    <inspection_tool class="SizeReplaceableByIsEmpty" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredTypes">
+        <set>
+          <option value="repository.AbstractRepository" />
+        </set>
+      </option>
+    </inspection_tool>
   </profile>
 </component>
