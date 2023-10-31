@@ -228,4 +228,22 @@ public class Service implements AbstractService<UUID> {
         Integer noCommunities = graph.communities(userIds, friends).size();
         return new Tuple<>(noCommunities, communityMembers);
     }
+
+    /**
+     * Computes a list with users that have minimum N friends.
+     *
+     * @param N Minimum number of friends.
+     * @return List of users that have minimum N friends.
+     */
+    @Override
+    public List<User> usersWithMinimumFriends(int N) {
+        List<User> userList = this.getUsers().stream()
+                .filter(user -> this.getFriendsOf(user.getId()).size() >= N)
+                .sorted(Comparator
+                        .comparingInt((User user) -> this.getFriendsOf(user.getId()).size()).reversed()
+                        .thenComparing(User::getFirstName).reversed()
+                        .thenComparing(User::getLastName).reversed())
+                .toList();
+        return userList;
+    }
 }

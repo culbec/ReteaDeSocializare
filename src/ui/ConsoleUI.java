@@ -38,6 +38,7 @@ public class ConsoleUI extends AbstractUI {
         actions.put("afisare_prieteni", this::showFriendsCommands);
         actions.put("comunitati", this::numberOfCommunitiesCommand);
         actions.put("most_active", this::mostActiveCommunityCommand);
+        actions.put("minimum_friends", this::minimumFriendsCommand);
         actions.put("exit", () -> System.out.println("Closing app..."));
     }
 
@@ -53,6 +54,7 @@ public class ConsoleUI extends AbstractUI {
                 afisare_prieteni - afiseaza prieteni unui user specificat prin id de la tastatura
                 comunitati - afiseaza numarul de comunitati din retea
                 most_active - afiseaza cea mai activa comunitate din retea
+                minimum_friends - afiseaza userii care au cel putin N (introdus de la tastatura) prieteni
                 exit - iesire din aplicatie""");
     }
 
@@ -68,6 +70,19 @@ public class ConsoleUI extends AbstractUI {
         this.service.addUser("Oana", "Marin", "oana.marin@mail.com");
         this.service.addUser("Ionut", "Vantu", "ionut.vantu@mail.com");
         this.service.addUser("Ana", "Manole", "ana.manole@mail.com");
+
+        this.service.addFriendship(this.service.getUsers().get(0).getId(), this.service.getUsers().get(1).getId());
+        this.service.addFriendship(this.service.getUsers().get(2).getId(), this.service.getUsers().get(1).getId());
+        this.service.addFriendship(this.service.getUsers().get(1).getId(), this.service.getUsers().get(3).getId());
+        this.service.addFriendship(this.service.getUsers().get(0).getId(), this.service.getUsers().get(4).getId());
+        this.service.addFriendship(this.service.getUsers().get(0).getId(), this.service.getUsers().get(5).getId());
+        this.service.addFriendship(this.service.getUsers().get(0).getId(), this.service.getUsers().get(6).getId());
+        this.service.addFriendship(this.service.getUsers().get(3).getId(), this.service.getUsers().get(4).getId());
+        this.service.addFriendship(this.service.getUsers().get(6).getId(), this.service.getUsers().get(5).getId());
+        this.service.addFriendship(this.service.getUsers().get(5).getId(), this.service.getUsers().get(1).getId());
+        this.service.addFriendship(this.service.getUsers().get(0).getId(), this.service.getUsers().get(2).getId());
+
+
 
         this.uiCommunities = this.service.communities();
     }
@@ -261,6 +276,19 @@ public class ConsoleUI extends AbstractUI {
                 community.forEach(userId -> System.out.println(this.service.getUser(userId)));
             }
         }
+    }
+
+    private void minimumFriendsCommand() throws IOException {
+        int N = 0;
+        do {
+            System.out.print("Minimum number of friends = ");
+            String NS = this.bufferedReader.readLine();
+            N = Integer.parseInt(NS.trim());
+        } while(N < 0);
+
+        List<User> userList = this.service.usersWithMinimumFriends(N);
+
+        userList.forEach(user -> System.out.println(user.getFirstName() + " " + user.getLastName() + ": " + this.service.getFriendsOf(user.getId()).size()));
     }
 
     public void run() throws IOException {

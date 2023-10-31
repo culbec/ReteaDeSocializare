@@ -9,6 +9,7 @@ import exception.ServiceException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public interface AbstractService<ID> {
     /**
@@ -97,4 +98,11 @@ public interface AbstractService<ID> {
      * Returns the number of communities and a list of the most active communities.
      */
     Tuple<Integer, List<List<ID>>> communities();
+
+    /**
+     * Computes a list with users that have minimum N friends.
+     * @param N Minimum number of friends.
+     * @return List of users that have minimum N friends.
+     */
+    List<User> usersWithMinimumFriends(int N);
 }
