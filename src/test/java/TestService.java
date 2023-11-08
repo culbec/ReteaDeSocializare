@@ -34,7 +34,7 @@ public class TestService {
         assert (!service.getUsers().isEmpty());
 
         // testing remove
-        service.removeUser(service.getUsers().getFirst().getId());
+        service.removeUser(service.getUsers().get(0).getId());
         assert (service.getUsers().isEmpty());
 
         service.addUser("Ion", "Remus", "ion.remus@mail.com");
@@ -49,8 +49,8 @@ public class TestService {
         service.addUser("Mariana", "Chiriac", "mariana.chiriac@mail.com");
 
         // adding a friendship
-        User user1 = service.getUsers().getFirst();
-        User user2 = service.getUsers().getLast();
+        User user1 = service.getUsers().get(0);
+        User user2 = service.getUsers().get(service.getUsers().size() - 1);
         service.addFriendship(user1.getId(), user2.getId());
         assert (!service.getFriendsOf(user1.getId()).isEmpty());
         assert (!service.getFriendships().isEmpty());
@@ -90,14 +90,13 @@ public class TestService {
         } catch (ServiceException sE) {
             assert true;
         }
-
         // verifying if the getter works correctly
         assert (service.getUser(user2.getId()).equals(user2));
 
         // adding back the user to test removal of friendship
         service.addUser("Marius", "Chiriac", "marius.chiriac@mail.com");
-        User friend1 = service.getUsers().getFirst();
-        User friend2 = service.getUsers().getLast();
+        User friend1 = service.getUsers().get(0);
+        User friend2 = service.getUsers().get(service.getUsers().size() - 1);
         service.addFriendship(friend1.getId(), friend2.getId());
         assert (service.removeFriendship(friend1.getId(), friend2.getId()).getId().getLeft().equals(friend1.getId()));
         assert (service.getFriendships().isEmpty());

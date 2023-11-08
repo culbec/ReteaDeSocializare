@@ -4,6 +4,7 @@ import java.util.Objects;
 
 /**
  * Pair of elements.
+ *
  * @param <E1> First entity of the pair.
  * @param <E2> Second entity of the pair.
  */

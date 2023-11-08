@@ -3,6 +3,7 @@ package repository;
 import entity.Entity;
 import exception.RepositoryException;
 
+import java.sql.SQLException;
 import java.util.Optional;
 
 /**
@@ -17,7 +18,7 @@ public interface AbstractRepository<ID, E extends Entity<ID>> {
      *
      * @return true if the repository is empty, false otherwise.
      */
-    boolean isEmpty();
+    boolean isEmpty() throws SQLException;
 
     /**
      * Size of the repository.

@@ -21,6 +21,13 @@ public class User extends Entity<UUID> {
         this.email = email;
     }
 
+    public User(UUID uuid, String firstName, String lastName, String email) {
+        super(uuid);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
     /**
      * Getter for the first name of the User
      *

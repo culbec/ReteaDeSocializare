@@ -9,7 +9,6 @@ import exception.ServiceException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public interface AbstractService<ID> {
     /**
@@ -101,8 +100,18 @@ public interface AbstractService<ID> {
 
     /**
      * Computes a list with users that have minimum N friends.
+     *
      * @param N Minimum number of friends.
      * @return List of users that have minimum N friends.
      */
     List<User> usersWithMinimumFriends(int N);
+
+    /**
+     * Returns the list of friends from a given month of the given user.
+     *
+     * @param id    ID of the user.
+     * @param month Month of the friendship date.
+     * @return List of friends from a given month of the given user.
+     */
+    List<User> friendsFromMonth(ID id, String month);
 }

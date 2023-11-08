@@ -13,6 +13,11 @@ public class Friendship extends Entity<Tuple<UUID, UUID>> {
         this.friendshipDate = LocalDateTime.now();
     }
 
+    public Friendship(UUID userId1, UUID userId2, LocalDateTime friendshipDate) {
+        super(new Tuple<>(userId1, userId2));
+        this.friendshipDate = friendshipDate;
+    }
+
     /**
      * Getter for the friendship date
      *

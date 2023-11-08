@@ -12,6 +12,7 @@ import validator.FriendshipValidator;
 import validator.UserValidator;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Service implements AbstractService<UUID> {
     private final AbstractRepository<UUID, User> users;
@@ -237,13 +238,42 @@ public class Service implements AbstractService<UUID> {
      */
     @Override
     public List<User> usersWithMinimumFriends(int N) {
-        List<User> userList = this.getUsers().stream()
+        return this.getUsers().stream()
                 .filter(user -> this.getFriendsOf(user.getId()).size() >= N)
                 .sorted(Comparator
                         .comparingInt((User user) -> this.getFriendsOf(user.getId()).size()).reversed()
                         .thenComparing(User::getFirstName).reversed()
                         .thenComparing(User::getLastName).reversed())
                 .toList();
-        return userList;
+    }
+
+    /**
+     * Returns the list of friends from a given month of the given user.
+     *
+     * @param userId ID of the user.
+     * @param month  Month of the friendship date.
+     * @return List of friends from a given month of the given user.
+     */
+    @Override
+    public List<User> friendsFromMonth(UUID userId, String month) {
+        Optional<User> userOptional = this.users.getOne(userId);
+        if (userOptional.isEmpty()) {
+            throw new ServiceException("The user does not exist!");
+        }
+
+        ArrayList<Friendship> friendshipArrayList = (ArrayList<Friendship>) this.friendships.getAll();
+        return friendshipArrayList.stream()
+                .filter(friendship -> friendship.getFriendshipDate().getMonthValue() == Integer.parseInt(month))
+                .filter(friendship -> friendship.getId().getLeft().equals(userId) || friendship.getId().getRight().equals(userId))
+                .map(friendship -> {
+                    Optional<User> user;
+                    if (friendship.getId().getLeft().equals(userId)) {
+                        user = this.users.getOne(friendship.getId().getRight());
+                    } else {
+                        user = this.users.getOne(friendship.getId().getLeft());
+                    }
+                    return user.get();
+                })
+                .collect(Collectors.toList());
     }
 }

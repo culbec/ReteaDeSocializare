@@ -113,7 +113,7 @@ public class UserValidator extends AbstractValidator<UUID, User> {
      */
     @Override
     public void validate(User user) throws ValidatorException {
-        if(user == null) {
+        if (user == null) {
             throw new ValidatorException("User cannot be null!");
         }
         ArrayList<String> errors = new ArrayList<>();

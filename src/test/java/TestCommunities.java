@@ -36,7 +36,7 @@ public class TestCommunities {
         service.addFriendship(users.get(5).getId(), users.get(6).getId());
 
         Tuple<Integer, List<List<UUID>>> integerListTuple = service.communities();
-        assert(integerListTuple.getLeft() == 2 && integerListTuple.getRight().get(0).size() == 5);
+        assert (integerListTuple.getLeft() == 2 && integerListTuple.getRight().get(0).size() == 5);
 
         System.out.println("Communities tests passed at: " + DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss").format(LocalDateTime.now()));
     }

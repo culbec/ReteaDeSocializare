@@ -3,13 +3,14 @@ import exception.RepositoryException;
 import repository.AbstractRepository;
 import repository.InMemoryRepository;
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.UUID;
 
 public class TestRepository {
-    public static void run() throws RepositoryException {
+    public static void run() throws RepositoryException, SQLException {
         AbstractRepository<UUID, User> userRepository = new InMemoryRepository<>();
 
         User user1 = new User("Laurentiu", "Muresan", "laurentiu.muresan@mail.com");
@@ -25,7 +26,7 @@ public class TestRepository {
             assert true;
         }
 
-        assert(userRepository.getOne(user1.getId()).isEmpty());
+        assert (userRepository.getOne(user1.getId()).isEmpty());
 
         try {
             userRepository.save(null);
@@ -33,7 +34,7 @@ public class TestRepository {
         } catch (IllegalArgumentException exception) {
             assert true;
         }
-        assert(userRepository.save(user1).isEmpty());
+        assert (userRepository.save(user1).isEmpty());
         try {
             userRepository.save(user1);
             assert false;
@@ -41,7 +42,7 @@ public class TestRepository {
             assert true;
         }
 
-        assert(!userRepository.isEmpty());
+        assert (!userRepository.isEmpty());
         assert (userRepository.size() == 1);
 
         assert (userRepository.getOne(user1.getId()).get().equals(user1));
@@ -53,7 +54,7 @@ public class TestRepository {
             assert true;
         }
 
-        assert(userRepository.delete(user2.getId()).isEmpty());
+        assert (userRepository.delete(user2.getId()).isEmpty());
 
         Optional<User> deleted = userRepository.delete(user1.getId());
         assert (deleted.isPresent() && deleted.get().equals(user1));

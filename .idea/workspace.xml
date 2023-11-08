@@ -4,17 +4,77 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fd86d2b-315d-48e5-be39-4d15dfdcdb96" name="Changes" comment="Java 8 Features + Optional on Repository methods + refactored the community feature.">
+    <list default="true" id="7fd86d2b-315d-48e5-be39-4d15dfdcdb96" name="Changes" comment="New feature added. Users with minimum number of friends.">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/ReteaDeSocializare.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/ReteaDeSocializare.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/AbstractDBRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/FriendshipDBRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/UserDBRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/TestDBRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/utility/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReteaDeSocializare/utility/Graph.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/AbstractService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/AbstractService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ConsoleUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReteaDeSocializare.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/service/AbstractService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReteaDeSocializare/service/AbstractService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/service/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReteaDeSocializare/service/Service.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/ui/ConsoleUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReteaDeSocializare/ui/ConsoleUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Community.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Community.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Friendship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Friendship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Tuple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exception/RepositoryException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/RepositoryException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exception/ServiceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/ServiceException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exception/ValidatorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/ValidatorException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repository/AbstractRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/AbstractRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repository/InMemoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/InMemoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/AbstractService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/AbstractService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/AbstractUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/AbstractUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/AbstractValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validator/AbstractValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/FriendshipValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validator/FriendshipValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validator/UserValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/RunTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RunTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestCommunities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestCommunities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -31,6 +91,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -39,48 +102,141 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Version-0.1&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/culbec/facultate/MAP/ReteaDeSocializare&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Version-0.1",
+    "last_opened_file_path": "/home/culbec/facultate/MAP/ReteaDeSocializare/src/main/java/repository/UserDBRepository.java",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "AtomHomeConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java" />
+      <recent name="$PROJECT_DIR$/src/main/java" />
+      <recent name="$PROJECT_DIR$/src/test" />
+      <recent name="$PROJECT_DIR$/src/main" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle build --warning-mode all" />
+    </option>
+  </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="ReteaDeSocializare" />
+      <module name="ReteaDeSocializare.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="RunTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="jbr-17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="RunTests" />
-      <module name="ReteaDeSocializare" />
+      <module name="ReteaDeSocializare.test" />
       <option name="VM_PARAMETERS" value="-ea" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ReteaDeSocializare [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="assemble" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ReteaDeSocializare [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildDependents" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ReteaDeSocializare [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--warning-mode all" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.RunTests" />
+      <item itemvalue="Gradle.ReteaDeSocializare [assemble]" />
+      <item itemvalue="Gradle.ReteaDeSocializare [buildDependents]" />
+      <item itemvalue="Gradle.ReteaDeSocializare [build]" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Gradle.ReteaDeSocializare [build]" />
+        <item itemvalue="Gradle.ReteaDeSocializare [buildDependents]" />
+        <item itemvalue="Gradle.ReteaDeSocializare [assemble]" />
         <item itemvalue="Application.RunTests" />
       </list>
     </recent_temporary>
@@ -103,7 +259,14 @@
       <workItem from="1698486429081" duration="10150000" />
       <workItem from="1698669459614" duration="50000" />
       <workItem from="1698674512486" duration="906000" />
-      <workItem from="1698760997427" duration="2348000" />
+      <workItem from="1698760997427" duration="2782000" />
+      <workItem from="1699253208291" duration="6311000" />
+      <workItem from="1699280620161" duration="1911000" />
+      <workItem from="1699365850878" duration="1629000" />
+      <workItem from="1699374293056" duration="4479000" />
+      <workItem from="1699379102087" duration="4910000" />
+      <workItem from="1699454475019" duration="596000" />
+      <workItem from="1699456455836" duration="15065000" />
     </task>
     <task id="LOCAL-00001" summary="Moved JavaDoc + specified the Tuple class.">
       <option name="closed" value="true" />
@@ -137,7 +300,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698496506520</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="New feature added. Users with minimum number of friends.">
+      <option name="closed" value="true" />
+      <created>1698763488468</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698763488468</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,7 +318,24 @@
     <MESSAGE value="Moved JavaDoc + specified the Tuple class." />
     <MESSAGE value="Java 8 Features + Optional on Repository methods + refactored the communities feature." />
     <MESSAGE value="Java 8 Features + Optional on Repository methods + refactored the community feature." />
-    <option name="LAST_COMMIT_MESSAGE" value="Java 8 Features + Optional on Repository methods + refactored the community feature." />
+    <MESSAGE value="New feature added. Users with minimum number of friends." />
+    <option name="LAST_COMMIT_MESSAGE" value="New feature added. Users with minimum number of friends." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/TestDBRepository.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/service/Service.java</url>
+          <line>258</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ReteaDeSocializare$RunTests.ic" NAME="RunTests Coverage Results" MODIFIED="1698496477149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
