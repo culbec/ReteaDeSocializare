@@ -9,19 +9,19 @@ import java.util.List;
 import java.util.Optional;
 
 public abstract class AbstractDBRepository<ID, E extends Entity<ID>> implements AbstractRepository<ID, E> {
-    protected final String db_url;
-    protected final String username;
-    protected final String password;
+    private final String DB_URL;
+    private final String USERNAME;
+    private final String PASSWORD;
 
-    protected final Connection connection;
+    protected final Connection CONNECTION;
 
     public AbstractDBRepository(String db_url, String username, String password) {
-        this.db_url = db_url;
-        this.username = username;
-        this.password = password;
+        this.DB_URL = db_url;
+        this.USERNAME = username;
+        this.PASSWORD = password;
 
         try {
-            this.connection = this.connect();
+            this.CONNECTION = this.connect();
         } catch (SQLException sqlException) {
             throw new RepositoryException(sqlException.getMessage());
         }
@@ -87,7 +87,7 @@ public abstract class AbstractDBRepository<ID, E extends Entity<ID>> implements 
      * @return Connection to the database.
      */
     public Connection getConnection() {
-        return connection;
+        return this.CONNECTION;
     }
 
     /**
@@ -97,7 +97,7 @@ public abstract class AbstractDBRepository<ID, E extends Entity<ID>> implements 
      * @throws SQLException Resulted from the connection if a problem was encountered.
      */
     Connection connect() throws SQLException {
-        return DriverManager.getConnection(this.db_url, this.username, this.password);
+        return DriverManager.getConnection(this.DB_URL, this.USERNAME, this.PASSWORD);
     }
 
     /**

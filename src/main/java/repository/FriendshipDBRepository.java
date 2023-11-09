@@ -21,7 +21,7 @@ public class FriendshipDBRepository extends AbstractDBRepository<Tuple<UUID, UUI
      */
     @Override
     public PreparedStatement statementCount() throws SQLException {
-        return this.connection.prepareStatement("select COUNT(*) from friendships");
+        return this.CONNECTION.prepareStatement("select COUNT(*) from friendships");
     }
 
     /**
@@ -31,7 +31,7 @@ public class FriendshipDBRepository extends AbstractDBRepository<Tuple<UUID, UUI
      */
     @Override
     public PreparedStatement statementSelectAll() throws SQLException {
-        return this.connection.prepareStatement("select * from friendships");
+        return this.CONNECTION.prepareStatement("select * from friendships");
     }
 
     /**
@@ -43,7 +43,7 @@ public class FriendshipDBRepository extends AbstractDBRepository<Tuple<UUID, UUI
     @Override
     public PreparedStatement statementSelectOnID(Tuple<UUID, UUID> id) throws SQLException {
         String sql = "select * from friendships where (id_user1 = ? AND id_user2 = ?) OR (id_user1 = ? AND id_user2 = ?)";
-        PreparedStatement statement = this.connection.prepareStatement(sql);
+        PreparedStatement statement = this.CONNECTION.prepareStatement(sql);
         statement.setObject(1, id.getLeft());
         statement.setObject(2, id.getRight());
         statement.setObject(3, id.getRight());
@@ -60,7 +60,7 @@ public class FriendshipDBRepository extends AbstractDBRepository<Tuple<UUID, UUI
     @Override
     public PreparedStatement statementSelectOnFields(Friendship friendship) throws SQLException {
         String sql = "select * from friendships where (id_user1 = ? AND id_user2 = ?) OR (id_user1 = ? AND id_user2 = ?) AND date = ?";
-        PreparedStatement statement = this.connection.prepareStatement(sql);
+        PreparedStatement statement = this.CONNECTION.prepareStatement(sql);
         statement.setObject(1, friendship.getId().getLeft());
         statement.setObject(2, friendship.getId().getRight());
         statement.setObject(3, friendship.getId().getRight());
@@ -78,7 +78,7 @@ public class FriendshipDBRepository extends AbstractDBRepository<Tuple<UUID, UUI
     @Override
     public PreparedStatement statementInsert(Friendship friendship) throws SQLException {
         String sql = "insert into friendships(id_user1, id_user2, date) values(?, ?, ?)";
-        PreparedStatement statement = this.connection.prepareStatement(sql);
+        PreparedStatement statement = this.CONNECTION.prepareStatement(sql);
         statement.setObject(1, friendship.getId().getLeft());
         statement.setObject(2, friendship.getId().getRight());
         statement.setObject(3, friendship.getFriendshipDate());
@@ -94,7 +94,7 @@ public class FriendshipDBRepository extends AbstractDBRepository<Tuple<UUID, UUI
     @Override
     public PreparedStatement statementDelete(Tuple<UUID, UUID> id) throws SQLException {
         String sql = "delete from friendships where (id_user1 = ? AND id_user2 = ?) OR (id_user1 = ? AND id_user2 = ?)";
-        PreparedStatement statement = this.connection.prepareStatement(sql);
+        PreparedStatement statement = this.CONNECTION.prepareStatement(sql);
         statement.setObject(1, id.getLeft());
         statement.setObject(2, id.getRight());
         statement.setObject(3, id.getRight());
@@ -111,7 +111,7 @@ public class FriendshipDBRepository extends AbstractDBRepository<Tuple<UUID, UUI
     @Override
     public PreparedStatement statementUpdate(Friendship friendship) throws SQLException {
         String sql = "update friendships set date = ? where (id_user1 = ? AND id_user2 = ?) OR (id_user2 = ? AND id_user1 = ?)";
-        PreparedStatement statement = this.connection.prepareStatement(sql);
+        PreparedStatement statement = this.CONNECTION.prepareStatement(sql);
         statement.setObject(1, friendship.getFriendshipDate());
         statement.setObject(2, friendship.getId().getLeft());
         statement.setObject(3, friendship.getId().getRight());

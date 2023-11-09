@@ -5,51 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7fd86d2b-315d-48e5-be39-4d15dfdcdb96" name="Changes" comment="New feature added. Users with minimum number of friends.">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/ReteaDeSocializare.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/ReteaDeSocializare.test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repository/AbstractDBRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repository/FriendshipDBRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repository/UserDBRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestDBRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReteaDeSocializare.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/service/AbstractService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReteaDeSocializare/service/AbstractService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/service/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReteaDeSocializare/service/Service.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReteaDeSocializare/ui/ConsoleUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReteaDeSocializare/ui/ConsoleUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Community.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Community.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Friendship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Friendship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Tuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exception/RepositoryException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/RepositoryException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exception/ServiceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/ServiceException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exception/ValidatorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/ValidatorException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/AbstractRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/AbstractRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/InMemoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/InMemoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/AbstractService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/AbstractService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/AbstractUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/AbstractUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ConsoleUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utility/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utility/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/AbstractValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validator/AbstractValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/FriendshipValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validator/FriendshipValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validator/UserValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/RunTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RunTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCommunities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestCommunities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/AbstractDBRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/AbstractDBRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +65,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Version-0.1",
+    "git-widget-placeholder": "Version-0.2",
     "last_opened_file_path": "/home/culbec/facultate/MAP/ReteaDeSocializare/src/main/java/repository/UserDBRepository.java",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -267,6 +224,7 @@
       <workItem from="1699379102087" duration="4910000" />
       <workItem from="1699454475019" duration="596000" />
       <workItem from="1699456455836" duration="15065000" />
+      <workItem from="1699517107825" duration="106000" />
     </task>
     <task id="LOCAL-00001" summary="Moved JavaDoc + specified the Tuple class.">
       <option name="closed" value="true" />

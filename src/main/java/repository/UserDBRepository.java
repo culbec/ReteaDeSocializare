@@ -19,7 +19,7 @@ public class UserDBRepository extends AbstractDBRepository<UUID, User> {
      */
     @Override
     public PreparedStatement statementCount() throws SQLException {
-        return this.connection.prepareStatement("select COUNT(*) from users");
+        return this.CONNECTION.prepareStatement("select COUNT(*) from users");
     }
 
     /**
@@ -29,7 +29,7 @@ public class UserDBRepository extends AbstractDBRepository<UUID, User> {
      */
     @Override
     public PreparedStatement statementSelectAll() throws SQLException {
-        return this.connection.prepareStatement("select * from users");
+        return this.CONNECTION.prepareStatement("select * from users");
     }
 
     /**
@@ -41,7 +41,7 @@ public class UserDBRepository extends AbstractDBRepository<UUID, User> {
     @Override
     public PreparedStatement statementSelectOnID(UUID uuid) throws SQLException {
         String sql = "select * from users where id = ?";
-        PreparedStatement statement = this.connection.prepareStatement(sql);
+        PreparedStatement statement = this.CONNECTION.prepareStatement(sql);
         statement.setObject(1, uuid);
         return statement;
     }
@@ -55,7 +55,7 @@ public class UserDBRepository extends AbstractDBRepository<UUID, User> {
     @Override
     public PreparedStatement statementSelectOnFields(User user) throws SQLException {
         String sql = "select * from users where first_name = ? AND last_name = ? AND email = ?";
-        PreparedStatement statement = this.connection.prepareStatement(sql);
+        PreparedStatement statement = this.CONNECTION.prepareStatement(sql);
         statement.setString(1, user.getFirstName());
         statement.setString(2, user.getLastName());
         statement.setString(3, user.getEmail());
@@ -71,7 +71,7 @@ public class UserDBRepository extends AbstractDBRepository<UUID, User> {
     @Override
     public PreparedStatement statementInsert(User user) throws SQLException {
         String sql = "insert into users(id, first_name, last_name, email) values(?, ?, ?,?)";
-        PreparedStatement statement = this.connection.prepareStatement(sql);
+        PreparedStatement statement = this.CONNECTION.prepareStatement(sql);
         statement.setObject(1, user.getId());
         statement.setString(2, user.getFirstName());
         statement.setObject(3, user.getLastName());
@@ -88,7 +88,7 @@ public class UserDBRepository extends AbstractDBRepository<UUID, User> {
     @Override
     public PreparedStatement statementDelete(UUID uuid) throws SQLException {
         String sql = "delete from users where id = ?";
-        PreparedStatement statement = this.connection.prepareStatement(sql);
+        PreparedStatement statement = this.CONNECTION.prepareStatement(sql);
         statement.setObject(1, uuid);
         return statement;
     }
@@ -102,7 +102,7 @@ public class UserDBRepository extends AbstractDBRepository<UUID, User> {
     @Override
     public PreparedStatement statementUpdate(User user) throws SQLException {
         String sql = "update users set first_name = ?, last_name = ?, email = ? where id = ?";
-        PreparedStatement statement = this.connection.prepareStatement(sql);
+        PreparedStatement statement = this.CONNECTION.prepareStatement(sql);
         statement.setString(1, user.getFirstName());
         statement.setString(2, user.getLastName());
         statement.setString(3, user.getEmail());
