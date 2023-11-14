@@ -42,6 +42,7 @@ public class ConsoleUI extends AbstractUI {
         actions.put("most_active", this::mostActiveCommunityCommand);
         actions.put("minimum_friends", this::minimumFriendsCommand);
         actions.put("friendships_from_month", this::friendsFromMonthCommand);
+        actions.put("last_name_contains_string", this::lastNameContainsString);
         actions.put("exit", () -> System.out.println("Closing app..."));
     }
 
@@ -59,6 +60,7 @@ public class ConsoleUI extends AbstractUI {
                 most_active - afiseaza cea mai activa comunitate din retea
                 minimum_friends - afiseaza userii care au cel putin N (introdus de la tastatura) prieteni
                 friendships_from_month - afiseaza toate relatiile de prietenie ale unui user dintr-o anumita luna
+                last_name_contains_string - afiseaza toti userii ai caror nume de familie contin un string
                 exit - iesire din aplicatie""");
     }
 
@@ -94,7 +96,7 @@ public class ConsoleUI extends AbstractUI {
         String input = this.bufferedReader.readLine();
         String[] fields = this.splitInput(input);
         if (fields.length != 3) {
-            System.out.println("Format for adding user invalid!");
+            System.err.println("Format for adding user invalid!");
             return;
         }
 
@@ -107,7 +109,7 @@ public class ConsoleUI extends AbstractUI {
             System.out.println("User added successfully!");
             this.uiCommunities = this.service.communities();
         } catch (ServiceException sE) {
-            System.out.println(sE.getMessage() + sE.getCause());
+            System.err.println(sE.getMessage() + sE.getCause());
         }
     }
 
@@ -129,9 +131,9 @@ public class ConsoleUI extends AbstractUI {
             System.out.println("Removed user: " + user);
             this.uiCommunities = this.service.communities();
         } catch (IllegalArgumentException iAE) {
-            System.out.println("Specified ID is invalid.");
+            System.err.println("Specified ID is invalid.");
         } catch (ServiceException sE) {
-            System.out.println(sE.getMessage() + sE.getCause());
+            System.err.println(sE.getMessage() + sE.getCause());
         }
     }
 
@@ -139,7 +141,7 @@ public class ConsoleUI extends AbstractUI {
         ArrayList<User> userList = this.service.getUsers();
 
         if (userList.isEmpty()) {
-            System.out.println("User list is empty!");
+            System.err.println("User list is empty!");
         } else {
             System.out.println("\nUSERS\n");
 
@@ -160,7 +162,7 @@ public class ConsoleUI extends AbstractUI {
         String[] fields = this.splitInput(input);
 
         if (fields.length != 2) {
-            System.out.println("Format for adding friendship is invalid!");
+            System.err.println("Format for adding friendship is invalid!");
             return;
         }
 
@@ -170,14 +172,14 @@ public class ConsoleUI extends AbstractUI {
             try {
                 userId1 = UUID.fromString(fields[0]);
             } catch (IllegalArgumentException iAE) {
-                System.out.println("Invalid ID format for the first user.");
+                System.err.println("Invalid ID format for the first user.");
                 return;
             }
 
             try {
                 userId2 = UUID.fromString(fields[1]);
             } catch (IllegalArgumentException iAE) {
-                System.out.println("Invalid ID format for the second user.");
+                System.err.println("Invalid ID format for the second user.");
                 return;
             }
 
@@ -185,7 +187,7 @@ public class ConsoleUI extends AbstractUI {
             System.out.println("Friendship added successfully!");
             this.uiCommunities = this.service.communities();
         } catch (ServiceException sE) {
-            System.out.println(sE.getMessage() + sE.getCause());
+            System.err.println(sE.getMessage() + sE.getCause());
         }
     }
 
@@ -212,7 +214,7 @@ public class ConsoleUI extends AbstractUI {
             try {
                 userId2 = UUID.fromString(fields[1]);
             } catch (IllegalArgumentException iAE) {
-                System.out.println("Invalid ID format for the second user.");
+                System.err.println("Invalid ID format for the second user.");
                 return;
             }
 
@@ -246,7 +248,7 @@ public class ConsoleUI extends AbstractUI {
         ArrayList<User> friends = this.service.getFriendsOf(userId);
 
         if (friends.isEmpty()) {
-            System.out.println("The specified user has no friends!");
+            System.err.println("The specified user has no friends!");
         } else {
             System.out.println("\nFRIENDS\n");
 
@@ -265,13 +267,13 @@ public class ConsoleUI extends AbstractUI {
         if (this.uiCommunities.getLeft() != this.service.getUsers().size()) {
             System.out.println("The number of communities is: " + this.uiCommunities.getLeft());
         } else {
-            System.out.println("The network has no communities!");
+            System.err.println("The network has no communities!");
         }
     }
 
     private void mostActiveCommunityCommand() {
         if (this.uiCommunities.getRight().size() == this.service.getUsers().size()) {
-            System.out.println("The network has no communities!");
+            System.err.println("The network has no communities!");
         } else {
             for (List<UUID> community : this.uiCommunities.getRight()) {
                 System.out.println("\nTHE MOST ACTIVE COMMUNITY' MEMBERS\n");
@@ -281,7 +283,7 @@ public class ConsoleUI extends AbstractUI {
     }
 
     private void minimumFriendsCommand() throws IOException {
-        int N = 0;
+        int N;
         do {
             System.out.print("Minimum number of friends = ");
             String NS = this.bufferedReader.readLine();
@@ -300,10 +302,10 @@ public class ConsoleUI extends AbstractUI {
 
         if (fields.length != 2) {
             System.err.println("Invalid usage!");
-        } else {
-            if (Integer.parseInt(fields[1]) < 1 || Integer.parseInt(fields[1]) > 12) {
-                System.err.println("Invalid month!");
-            }
+            return;
+        }
+        if (Integer.parseInt(fields[1]) < 1 || Integer.parseInt(fields[1]) > 12) {
+            System.err.println("Invalid month!");
         }
 
         try {
@@ -312,8 +314,33 @@ public class ConsoleUI extends AbstractUI {
                 System.out.println("\nFRIENDSHIPS\n");
                 friends.forEach(System.out::println);
             } else {
-                System.out.println("The user has no friendships created in " + fields[1]);
+                System.err.println("The user has no friendships created in " + fields[1]);
             }
+        } catch (ServiceException sE) {
+            System.err.println(sE.getMessage());
+        }
+    }
+
+    private void lastNameContainsString() throws IOException {
+        System.out.print("Give a string: ");
+        String input = this.bufferedReader.readLine();
+        String[] fields = this.splitInput(input);
+
+        if (fields.length != 1) {
+            System.err.println("Invalid usage!");
+            return;
+        }
+
+        try {
+            List<User> userList = this.service.usersWithStringInLastName(fields[0]);
+
+            if (userList.isEmpty()) {
+                System.err.println("No users found!");
+                return;
+            }
+
+            System.out.println("Users that have " + fields[0] + " in their last name\n");
+            userList.forEach(System.out::println);
         } catch (ServiceException sE) {
             System.err.println(sE.getMessage());
         }

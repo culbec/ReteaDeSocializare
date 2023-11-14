@@ -12,7 +12,7 @@ import java.util.Optional;
  * @param <E>  Entity that is stored in the Repository.
  * @param <ID> Type E must have an attribute of type ID.
  */
-public interface AbstractRepository<ID, E extends Entity<ID>> {
+public interface Repository<ID, E extends Entity<ID>> {
     /**
      * Checks if the repository is empty.
      *

@@ -101,6 +101,11 @@ public class TestService {
         assert (service.removeFriendship(friend1.getId(), friend2.getId()).getId().getLeft().equals(friend1.getId()));
         assert (service.getFriendships().isEmpty());
 
+        assert service.friendsFromMonth(friend1.getId(), "10").isEmpty();
+
+        service.addFriendship(friend1.getId(), friend2.getId());
+        assert !service.friendsFromMonth(friend1.getId(), String.valueOf(LocalDateTime.now().getMonth().getValue())).isEmpty();
+
         System.out.println("Service tests passed at: " + DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss").format(LocalDateTime.now()));
     }
 }

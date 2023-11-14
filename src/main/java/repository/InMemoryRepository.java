@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class InMemoryRepository<ID, E extends Entity<ID>> implements AbstractRepository<ID, E> {
+public class InMemoryRepository<ID, E extends Entity<ID>> implements Repository<ID, E> {
     private final Map<ID, E> entities;
 
     public InMemoryRepository() {

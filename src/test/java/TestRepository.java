@@ -1,6 +1,6 @@
 import entity.User;
 import exception.RepositoryException;
-import repository.AbstractRepository;
+import repository.Repository;
 import repository.InMemoryRepository;
 
 import java.sql.SQLException;
@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public class TestRepository {
     public static void run() throws RepositoryException, SQLException {
-        AbstractRepository<UUID, User> userRepository = new InMemoryRepository<>();
+        Repository<UUID, User> userRepository = new InMemoryRepository<>();
 
         User user1 = new User("Laurentiu", "Muresan", "laurentiu.muresan@mail.com");
         User user2 = new User("Marian", "Chiriac", "marian.chiriac@mail.com");

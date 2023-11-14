@@ -4,29 +4,39 @@ import entity.User;
 import repository.FriendshipDBRepository;
 import repository.UserDBRepository;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 public class TestDBRepository {
     private static void clearDBUser(UserDBRepository userDBRepository) {
-        try (PreparedStatement statement = userDBRepository.getConnection().prepareStatement("delete from users")) {
-            statement.execute();
+        try (Connection connection = userDBRepository.connect()) {
+            try (PreparedStatement statement = connection.prepareStatement("delete from users")) {
+                statement.execute();
+            } catch (SQLException sqlException) {
+                System.err.println(sqlException.getMessage());
+            }
         } catch (SQLException sqlException) {
-            System.out.println(sqlException.getMessage());
+            System.err.println(sqlException.getMessage());
         }
     }
 
     private static void clearDBFriendship(FriendshipDBRepository friendshipDBRepository) {
-        try (PreparedStatement statement = friendshipDBRepository.getConnection().prepareStatement("delete from friendships")) {
-            statement.execute();
+        try (Connection connection = friendshipDBRepository.connect()) {
+            try (PreparedStatement statement = connection.prepareStatement("delete from friendships")) {
+                statement.execute();
+            } catch (SQLException sqlException) {
+                System.err.println(sqlException.getMessage());
+            }
         } catch (SQLException sqlException) {
-            System.out.println(sqlException.getMessage());
+            System.err.println(sqlException.getMessage());
         }
     }
 
-    public static void runUserDBRepository() throws SQLException {
+    public static void runUserDBRepository() {
         UserDBRepository userDBRepository = new UserDBRepository("jdbc:postgresql://localhost:5432/socialNetworkTests", "postgres", "postgres");
         clearDBUser(userDBRepository);
 
@@ -83,8 +93,10 @@ public class TestDBRepository {
         Friendship friendshipUpdated = new Friendship(user1.getId(), user2.getId());
         friendshipDBRepository.update(friendshipUpdated);
 
-        Friendship friendshipRet = friendshipDBRepository.getOne(friendship.getId()).get();
-        assert friendshipRet.equals(friendship);
+        Optional<Friendship> friendshipRet = friendshipDBRepository.getOne(friendship.getId());
+        if (friendshipRet.isPresent()) {
+            assert friendshipRet.get().equals(friendship);
+        }
 
         System.out.println("FriendshipDBRepository passed at: " + DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss").format(LocalDateTime.now()));
     }

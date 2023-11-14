@@ -6,21 +6,24 @@ import entity.User;
 import exception.RepositoryException;
 import exception.ServiceException;
 import exception.ValidatorException;
-import repository.AbstractRepository;
+import repository.Repository;
+import repository.UserDBRepository;
 import utility.Graph;
 import validator.FriendshipValidator;
 import validator.UserValidator;
 
+import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class Service implements AbstractService<UUID> {
-    private final AbstractRepository<UUID, User> users;
-    private final AbstractRepository<Tuple<UUID, UUID>, Friendship> friendships;
+    private final Repository<UUID, User> userRepository;
+    private final Repository<Tuple<UUID, UUID>, Friendship> friendshipRepository;
 
-    public Service(AbstractRepository<UUID, User> userRepo, AbstractRepository<Tuple<UUID, UUID>, Friendship> friendshipRepo) {
-        this.users = userRepo;
-        this.friendships = friendshipRepo;
+    public Service(Repository<UUID, User> userRepo, Repository<Tuple<UUID, UUID>, Friendship> friendshipRepo) {
+        this.userRepository = userRepo;
+        this.friendshipRepository = friendshipRepo;
     }
 
     /**
@@ -41,7 +44,7 @@ public class Service implements AbstractService<UUID> {
         }
 
         try {
-            if (this.users.save(user).isPresent()) {
+            if (this.userRepository.save(user).isPresent()) {
                 throw new ServiceException("An user with the same ID already exists.");
             }
         } catch (RepositoryException rE) {
@@ -58,7 +61,7 @@ public class Service implements AbstractService<UUID> {
      */
     @Override
     public User removeUser(UUID userId) throws ServiceException {
-        Optional<User> deleted = this.users.delete(userId);
+        Optional<User> deleted = this.userRepository.delete(userId);
 
         if (deleted.isEmpty()) {
             throw new ServiceException("The user with the specified ID does not exist.");
@@ -66,10 +69,10 @@ public class Service implements AbstractService<UUID> {
 
         Iterable<User> friendsOf = this.getFriendsOf(userId);
         friendsOf.forEach(user -> {
-            if (this.friendships.getOne(new Tuple<>(userId, user.getId())).isEmpty()) {
-                this.friendships.delete(new Tuple<>(user.getId(), userId));
+            if (this.friendshipRepository.getOne(new Tuple<>(userId, user.getId())).isEmpty()) {
+                this.friendshipRepository.delete(new Tuple<>(user.getId(), userId));
             } else {
-                this.friendships.delete(new Tuple<>(userId, user.getId()));
+                this.friendshipRepository.delete(new Tuple<>(userId, user.getId()));
             }
         });
 
@@ -86,7 +89,7 @@ public class Service implements AbstractService<UUID> {
     @Override
     public User getUser(UUID userId) throws ServiceException {
         try {
-            Optional<User> userFound = this.users.getOne(userId);
+            Optional<User> userFound = this.userRepository.getOne(userId);
             if (userFound.isEmpty()) {
                 throw new ServiceException("No user was found.");
             }
@@ -104,7 +107,7 @@ public class Service implements AbstractService<UUID> {
     @Override
     public ArrayList<User> getUsers() {
         ArrayList<User> userList = new ArrayList<>();
-        this.users.getAll().forEach(userList::add);
+        this.userRepository.getAll().forEach(userList::add);
         return userList;
     }
 
@@ -118,12 +121,12 @@ public class Service implements AbstractService<UUID> {
     public ArrayList<User> getFriendsOf(UUID uuid) throws RepositoryException {
         ArrayList<User> friends = new ArrayList<>();
 
-        this.friendships.getAll().forEach(friendship -> {
+        this.friendshipRepository.getAll().forEach(friendship -> {
             if (friendship.getId().getLeft().equals(uuid)) {
-                Optional<User> friend = this.users.getOne(friendship.getId().getRight());
+                Optional<User> friend = this.userRepository.getOne(friendship.getId().getRight());
                 friend.ifPresent(friends::add);
             } else if (friendship.getId().getRight().equals(uuid)) {
-                Optional<User> friend = this.users.getOne(friendship.getId().getLeft());
+                Optional<User> friend = this.userRepository.getOne(friendship.getId().getLeft());
                 friend.ifPresent(friends::add);
             }
         });
@@ -143,7 +146,7 @@ public class Service implements AbstractService<UUID> {
         try {
             Friendship friendship = new Friendship(id1, id2);
             new FriendshipValidator().validate(friendship); // the friendships are the same but reversed
-            if (this.friendships.save(friendship).isPresent()) {
+            if (this.friendshipRepository.save(friendship).isPresent()) {
                 throw new ServiceException("A friendship with the same ID already exists!");
             }
         } catch (ValidatorException | RepositoryException exception) {
@@ -160,17 +163,17 @@ public class Service implements AbstractService<UUID> {
      */
     @Override
     public Friendship removeFriendship(UUID id1, UUID id2) throws ServiceException {
-        Optional<Friendship> friendship = this.friendships.getOne(new Tuple<>(id1, id2));
+        Optional<Friendship> friendship = this.friendshipRepository.getOne(new Tuple<>(id1, id2));
 
         if (friendship.isEmpty()) {
-            friendship = this.friendships.getOne(new Tuple<>(id2, id1));
+            friendship = this.friendshipRepository.getOne(new Tuple<>(id2, id1));
             if (friendship.isEmpty()) {
                 throw new ServiceException("No friendship found.");
             } else {
-                this.friendships.delete(friendship.get().getId());
+                this.friendshipRepository.delete(friendship.get().getId());
             }
         } else {
-            this.friendships.delete(friendship.get().getId());
+            this.friendshipRepository.delete(friendship.get().getId());
         }
 
         return friendship.get();
@@ -184,7 +187,7 @@ public class Service implements AbstractService<UUID> {
     @Override
     public ArrayList<Friendship> getFriendships() {
         ArrayList<Friendship> friendshipList = new ArrayList<>();
-        this.friendships.getAll().forEach(friendshipList::add);
+        this.friendshipRepository.getAll().forEach(friendshipList::add);
         return friendshipList;
     }
 
@@ -200,7 +203,7 @@ public class Service implements AbstractService<UUID> {
         ArrayList<UUID> userIds = new ArrayList<>();
         HashMap<UUID, List<UUID>> friends = new HashMap<>();
 
-        this.users.getAll().forEach(user -> userIds.add(user.getId()));
+        this.userRepository.getAll().forEach(user -> userIds.add(user.getId()));
 
         userIds.forEach(userId -> friends.put(userId, new ArrayList<>()));
         userIds.forEach(userId -> {
@@ -256,24 +259,39 @@ public class Service implements AbstractService<UUID> {
      */
     @Override
     public List<User> friendsFromMonth(UUID userId, String month) {
-        Optional<User> userOptional = this.users.getOne(userId);
+        Optional<User> userOptional = this.userRepository.getOne(userId);
         if (userOptional.isEmpty()) {
             throw new ServiceException("The user does not exist!");
         }
 
-        ArrayList<Friendship> friendshipArrayList = (ArrayList<Friendship>) this.friendships.getAll();
-        return friendshipArrayList.stream()
+        Iterable<Friendship> friendshipIterable = this.friendshipRepository.getAll();
+        return StreamSupport.stream(friendshipIterable.spliterator(), false)
                 .filter(friendship -> friendship.getFriendshipDate().getMonthValue() == Integer.parseInt(month))
                 .filter(friendship -> friendship.getId().getLeft().equals(userId) || friendship.getId().getRight().equals(userId))
                 .map(friendship -> {
                     Optional<User> user;
                     if (friendship.getId().getLeft().equals(userId)) {
-                        user = this.users.getOne(friendship.getId().getRight());
+                        user = this.userRepository.getOne(friendship.getId().getRight());
                     } else {
-                        user = this.users.getOne(friendship.getId().getLeft());
+                        user = this.userRepository.getOne(friendship.getId().getLeft());
                     }
                     return user.get();
                 })
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * Returns a list of users for which the last name contains a given string.
+     *
+     * @param string String to verify.
+     * @return List of users for which the last name contains a given string.
+     */
+    public List<User> usersWithStringInLastName(String string) throws ServiceException {
+        try {
+            UserDBRepository userDBRepository = (UserDBRepository) this.userRepository;
+            return userDBRepository.usersLastNameContainsString(string);
+        } catch (RepositoryException repositoryException) {
+            throw new ServiceException(repositoryException.getMessage());
+        }
     }
 }

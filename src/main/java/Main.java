@@ -17,8 +17,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
         /*InMemoryRepository<UUID, User> userInMemoryRepository = new InMemoryRepository<>();
         InMemoryRepository<Tuple<UUID, UUID>, Friendship> friendshipInMemoryRepository = new InMemoryRepository<>();*/
-        FriendshipDBRepository friendshipDBRepository = new FriendshipDBRepository("jdbc:postgresql://localhost:5432/socialnetwork", "postgres", "postgres");
+
         UserDBRepository userDBRepository = new UserDBRepository("jdbc:postgresql://localhost:5432/socialnetwork", "postgres", "postgres");
+        FriendshipDBRepository friendshipDBRepository = new FriendshipDBRepository("jdbc:postgresql://localhost:5432/socialnetwork", "postgres", "postgres");
+
         Service service = new Service(userDBRepository, friendshipDBRepository);
 
         ConsoleUI consoleUI = new ConsoleUI(service);
