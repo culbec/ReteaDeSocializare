@@ -339,7 +339,7 @@ public class ConsoleUI extends AbstractUI {
                 return;
             }
 
-            System.out.println("Users that have " + fields[0] + " in their last name\n");
+            System.out.println("Users that have '" + fields[0] + "' in their last name\n");
             userList.forEach(System.out::println);
         } catch (ServiceException sE) {
             System.err.println(sE.getMessage());

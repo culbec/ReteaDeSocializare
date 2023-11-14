@@ -288,8 +288,7 @@ public class Service implements AbstractService<UUID> {
      */
     public List<User> usersWithStringInLastName(String string) throws ServiceException {
         try {
-            UserDBRepository userDBRepository = (UserDBRepository) this.userRepository;
-            return userDBRepository.usersLastNameContainsString(string);
+            return ((UserDBRepository)this.userRepository).usersLastNameContainsString(string);
         } catch (RepositoryException repositoryException) {
             throw new ServiceException(repositoryException.getMessage());
         }
